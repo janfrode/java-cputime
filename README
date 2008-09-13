@@ -1,0 +1,21 @@
+Compile the java coden:
+
+javac CPUtest.java
+
+Generate the JNI headerfile:
+
+javah -jni CPUtest
+
+Compiler the library (Have no idea how this should be done on non-unix
+systems):
+
+cc -o libjnicputime.so -O -shared cputime.c -I/usr/java/include/
+    -I/usr/java/include/irix
+
+Set the library search path to include where libjnicputime.so is located: 
+
+setenv LD_LIBRARY_PATH .
+
+Run the program:
+
+java CPUtest
